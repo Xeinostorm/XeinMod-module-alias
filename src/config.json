@@ -1,0 +1,12 @@
+{
+    "package.json": [ "aliases", "module-aliases", "_moduleAliases" ],
+    "config.json": [ "aliases", "module-aliases", "_moduleAliases" ],
+    "module_alias.json": [ "aliases", "module-aliases", "_moduleAliases" ],
+    "aliases.json": [ "aliases", "module-aliases", "_moduleAliases" ],
+    "xeinmod.config.json": [ "aliases", "module-aliases", "_moduleAliases" ],
+
+    "aliases.js": [ "aliases", "module-aliases", "_moduleAliases" ],
+    "config.js": [ "aliases", "module-aliases", "_moduleAliases" ],
+    "module_alias.js": [ "aliases", "module-aliases", "_moduleAliases" ],
+    "xeinmod.config.js": [ "aliases", "module-aliases", "_moduleAliases" ]
+}
