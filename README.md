@@ -5,7 +5,7 @@
 ## Features
 
 - **Supports both ESM and CJS**: Works with both `import` and `require` in Node.js projects.
-- **Simple configuration**: Define your aliases in a simple configuration file (`module-alias.config.js` or `.module-alias.json`).
+- **Simple configuration**: Define your aliases in a simple configuration file (`package.json`, `there are more but will be adding them when finished!`).
 - **Flexible path resolution**: Supports relative and absolute paths, making it easy to set up aliases across various project structures.
 - **Lightweight**: A minimal and efficient solution with no unnecessary dependencies.
 
