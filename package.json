@@ -1,16 +1,12 @@
 {
-  "name": "@xeinmod/module-alias",
+  "name": "module-alias",
   "version": "1.0.0",
   "description": "A custom module alias package that works with both ESM and CJS in Node.js",
   "main": "./src/CJS/index.js",
   "module": "./src/ESM/index.mjs",
   "exports": {
-    "require": "./src/CJS/index.js",
-    "import": "./src/ESM/index.mjs"
-  },
-  "scripts": {
-    "start_cjs": "nodemon src/CJS/index.js",
-    "start_esm": "nodemon src/ESM/index.mjs"
+    ".": "./",
+    "./loader": "./src/ESM/loader.mjs"
   },
   "repository": {
     "type": "git",
@@ -31,5 +27,11 @@
   "bugs": {
     "url": "https://github.com/Xeinostorm/XeinMod-module-alias/issues"
   },
-  "homepage": "https://github.com/Xeinostorm/XeinMod-module-alias#readme"
+  "homepage": "https://github.com/Xeinostorm/XeinMod-module-alias#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "eslint": "^9.17.0",
+    "globals": "^15.14.0",
+    "prettier": "^3.4.2"
+  }
 }

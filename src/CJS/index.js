@@ -1,6 +1,6 @@
 'use strict';
-console.clear()
 
+const Module = require('module');
 const { resolve, join, normalize, basename } = require('path')
 const fs = require('fs')
 
@@ -40,6 +40,7 @@ function addAlias(alias, target){
   const path = resolve(normalizedPath)
   ListOfAliases[alias] = target
   ListOfPaths[alias] = path
+  console.log(ListOfAliases, ListOfPaths)
 }
 
 function addAliases(aliases){
@@ -72,8 +73,12 @@ async function SearchForAliases(){
   const foundAliases = []
 
   for (const file of FilePaths){
-    if (!fs.existsSync(file)) continue;
+    
+    if (!fs.existsSync(file)) {
+      continue
+    };
 
+    
     try{
       const readFile = fs.readFileSync(file, 'utf-8');
       const fileName = basename(file);
@@ -119,32 +124,40 @@ async function SearchForAliases(){
   }, {});
 
   addAliases(uniqueAliasesObject);
+
 }
 
-function customRequire(moduleName) {
+console.log('hello v2')
 
-  for (const [alias, modulePath] of Object.entries(ListOfPaths)) {
-    if (alias === moduleName) {
-      return require(path.resolve(__dirname, modulePath));
+function customRequire() {
+  const originalRequire = Module.prototype.require;
+
+  Module.prototype.require = function (request) {
+    for (const [alias, modulePath] of Object.entries(ListOfAliases)) {
+      if (request.startsWith(alias)) {
+        const aliasPath = request.replace(alias, modulePath);
+        const resolvedPath = resolve(aliasPath);
+
+        return originalRequire.call(this, resolvedPath);
+      }
     }
-  }
-
-  return require(moduleName);
-}
-
-
-async function main(){
-  try{
-    await SearchForAliases()
-    global.require = customRequire
-  }catch(error){
-    console.error('Error:', error.message)
-  }
   
+    return originalRequire.call(this, request);
+  };
 }
 
+(async function initialize() {
+  try {
+    customRequire();
+    await SearchForAliases();
+  } catch (error) {
+    console.error('Initialization failed:', error);
+  }
+})();
 
-module.exports = main()
-module.exports.addAlias = addAlias
-module.exports.addAliases = addAliases
-module.exports.reset = reset
+
+module.exports = {
+  addAlias,
+  addAliases,
+  reset,
+}
