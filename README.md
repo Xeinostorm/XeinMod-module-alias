@@ -10,54 +10,7 @@
 - **Lightweight**: A minimal and efficient solution with no unnecessary dependencies.
 
 ## Installation
-
-To install `xeinmod/module-alias`, use npm or yarn:
-
-```bash
-npm install xeinmod/module-alias
-or
-yarn add xeinmod/module-alias
-```
-## Configuration
-You can configure your module aliases using a simple configuration file. Create a module-alias.config.js or .module-alias.json file at the root of your project.
-
-### Example Configuration (module-alias.config.js)
-```js
-module.exports = {
-  "aliases": {
-    "@utils": "./src/utils",
-    "@models": "./src/models",
-    "@controllers": "./src/controllers"
-  }
-};
-```
-### Example Configuration (.module-alias.json)
-```json
-{
-  "aliases": {
-    "@utils": "./src/utils",
-    "@models": "./src/models",
-    "@controllers": "./src/controllers"
-  }
-}
-```
-## Usage
-Once the package is installed and configured, you can start using the aliases in your code.
-
-### Example (ESM)
-```js
-import { myFunction } from '@utils/myFunction.js';
-```
-### Example (CJS)
-```js
-const { myFunction } = require('@utils/myFunction.js');
-```
-### Automatically Resolve Aliases
-To enable the alias resolution in your project, you can import the alias resolver in your entry file (e.g., index.js or app.js):
-```js
-require('xeinmod/module-alias/register');
-```
-This will ensure that the module aliases are automatically resolved when your project starts.
+COMING SOON
 
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
